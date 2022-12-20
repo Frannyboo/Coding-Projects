@@ -21,6 +21,13 @@ def calculator():
     for sign in operations:
         print(sign)
     opp = input("Pick an operation from the list above?: \n")
+    if opp not in operations:
+        print("You entered an invalid value")
+        opp = input("Pick an operation from the list above?: \n")
+
+
+
+
     num2 = float(input("Whats the second number?: \n"))
     operation_chosen = operations[opp]
     answer = operation_chosen(num1 , num2)
@@ -28,7 +35,7 @@ def calculator():
     print(f"{num1} {opp} {num2} = {answer}")
     end = False
     while not end:
-        end_game = input(f"Type y if you want to continue working with {answer}. if not, type n to start again \n")
+        end_game = input(f"Type y if you want to continue working with {answer}, type n to start again  and e to end\n")
         if end_game == "y":
             for sign in operations:
                 print(sign)
@@ -39,8 +46,9 @@ def calculator():
             answer = operation_chosen(new_number , num3)
 
             print(f"{new_number} {opp} {num3} = {answer}")
-        
+        elif end_game == "e":
+            end = True
         else:
-            end = False
+            end = True
             calculator()
 calculator()

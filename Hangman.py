@@ -1,11 +1,11 @@
 import random
-from hangman_art import stages, logo
-from hangman_words import word_list
-from replit import clear
-
-print(logo)
+#from hangman_art import stages, logo
+#from hangman_words import word_list
+#from replit import clear
+word_list = ["happy", "sad", "Angry", "pocket", "packet", "age", "piano", "guitar"]
+#print(logo)
 game_is_finished = False
-lives = len(stages) - 1
+lives = 6
 
 chosen_word = random.choice(word_list)
 word_length = len(chosen_word)
@@ -18,7 +18,7 @@ while not game_is_finished:
     guess = input("Guess a letter: ").lower()
 
     #Use the clear() function imported from replit to clear the output between guesses.
-    clear()
+    #clear()
 
     if guess in display:
         print(f"You've already guessed {guess}")
@@ -30,8 +30,8 @@ while not game_is_finished:
     print(f"{' '.join(display)}")
 
     if guess not in chosen_word:
-        print(f"You guessed {guess}, that's not in the word. You lose a life.")
         lives -= 1
+        print(f"You guessed {guess}, that's not in the word. You lose a life. you have {lives} lives left")
         if lives == 0:
             game_is_finished = True
             print("You lose.")
@@ -40,4 +40,4 @@ while not game_is_finished:
         game_is_finished = True
         print("You win.")
 
-    print(stages[lives])
+   # print(stages[lives])
